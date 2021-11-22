@@ -3,11 +3,12 @@ from rest_framework.routers import DefaultRouter
 
 from profiles_api import views
 
-routers = DefaultRouter()
-routers.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
+router = DefaultRouter()
+router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
+router.register('profile', views.UserProfileViewSet)
 
 
 urlpatterns = [
     path('hello-view/', views.HelloApiView.as_view()),
-    path('', include(routers.urls)),
+    path('', include(router.urls)),
 ]
