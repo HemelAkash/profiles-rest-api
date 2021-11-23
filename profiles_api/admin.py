@@ -13,6 +13,14 @@ class ProfileAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
+class ProfileFeedAdmin(admin.ModelAdmin):
+    list_display = ('user_profile', 'status_text', 'created_on')
+    search_fields =('user_profile__email','status_text', 'created_on')
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
 
 
 admin.site.register(models.UserProfile, ProfileAdmin)
+admin.site.register(models.ProfileFeedItem, ProfileFeedAdmin)
